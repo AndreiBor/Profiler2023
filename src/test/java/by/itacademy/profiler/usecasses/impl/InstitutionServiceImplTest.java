@@ -2,6 +2,7 @@ package by.itacademy.profiler.usecasses.impl;
 
 import by.itacademy.profiler.persistence.model.Institution;
 import by.itacademy.profiler.persistence.repository.InstitutionRepository;
+import by.itacademy.profiler.usecasses.dto.InstitutionRequestDto;
 import by.itacademy.profiler.usecasses.dto.InstitutionResponseDto;
 import by.itacademy.profiler.usecasses.mapper.InstitutionMapper;
 import org.junit.jupiter.api.Test;
@@ -39,5 +40,19 @@ class InstitutionServiceImplTest {
 
         List<InstitutionResponseDto> actualResult = institutionService.getInstitutions();
         assertEquals(expectedListSize,actualResult.size());
+    }
+
+    @Test
+    void shouldReturnInstitutionResponseDtoWhenInstitutionSaved(){
+        InstitutionRequestDto requestDto = createInstitutionRequestDto().build();
+        Institution institution = createInstitution().build();
+        InstitutionResponseDto institutionResponseDto = createInstitutionResponseDto().build();
+
+        when(institutionMapper.fromDtoToEntity(requestDto)).thenReturn(institution);
+        when(institutionRepository.save(institution)).thenReturn(institution);
+        when(institutionMapper.fromEntityToDto(institution)).thenReturn(institutionResponseDto);
+
+        InstitutionResponseDto savedInstitution = institutionService.save(requestDto);
+        assertEquals(requestDto.name(), savedInstitution.name());
     }
 }
