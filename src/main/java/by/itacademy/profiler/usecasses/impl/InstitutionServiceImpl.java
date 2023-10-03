@@ -3,6 +3,7 @@ package by.itacademy.profiler.usecasses.impl;
 import by.itacademy.profiler.persistence.model.Institution;
 import by.itacademy.profiler.persistence.repository.InstitutionRepository;
 import by.itacademy.profiler.usecasses.InstitutionService;
+import by.itacademy.profiler.usecasses.dto.InstitutionRequestDto;
 import by.itacademy.profiler.usecasses.dto.InstitutionResponseDto;
 import by.itacademy.profiler.usecasses.mapper.InstitutionMapper;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,19 @@ public class InstitutionServiceImpl implements InstitutionService {
         return institutions.stream()
                 .map(institutionMapper::fromEntityToDto)
                 .toList();
+    }
+
+    @Override
+    public boolean isInstitutionExist(Long id) {
+        return institutionRepository.existsById(id);
+    }
+
+    @Override
+    public InstitutionResponseDto save(InstitutionRequestDto dto) {
+        Institution savedInstitution = institutionRepository
+                .save(institutionMapper
+                        .fromDtoToEntity(dto));
+        return institutionMapper.fromEntityToDto(savedInstitution);
+
     }
 }
