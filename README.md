@@ -33,7 +33,7 @@ ensuring the integrity and accessibility of information.
 
 ### Endpoints
 
-All information related to the endpoints can be located in [Confluence](https://conf.it-academy.by/display/PROF/Prof_DEV+space)
+All information related to the endpoints can be located in [Confluence](https://conf.javaguru.by/display/PROF/Prof_DEV+space)
 You also can explore and test all the endpoints using Swagger. Here's how:
 
 1. Make sure your application is up and running at `http://localhost:8080`.
@@ -55,7 +55,7 @@ Follow these instructions to successfully set up the project on your computer.
 
 2. Clone the repository to your local computer by running the following command:
     ```
-    git clone https://git.it-academy.by/bootcamp/dev.git
+    git clone https://git.javaguru.by/bootcamp/dev.git
     ```
 3. Open your IDE.
 

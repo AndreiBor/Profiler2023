@@ -38,7 +38,7 @@ management:
 logging:
   level:
     root: info
-    by.itacademy.profiler: debug
+    by.javaguru.profiler: debug
 image:
   storage-dir: ${IMAGES_STORAGE_FOLDER}
 curriculum-vitae:

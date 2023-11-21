@@ -3,7 +3,7 @@ logging:
     root: info
     org.springframework.security: debug
     org.springframework.web: debug
-    by.itacademy.profiler: debug
+    by.javaguru.profiler: debug
     liquibase: error
 springdoc:
   show-actuator: true
