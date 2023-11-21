@@ -1,6 +1,7 @@
 package by.itacademy.profiler.util;
 
 import by.itacademy.profiler.persistence.model.Institution;
+import by.itacademy.profiler.usecasses.dto.InstitutionRequestDto;
 import by.itacademy.profiler.usecasses.dto.InstitutionResponseDto;
 
 public class InstitutionsTestData {
@@ -21,4 +22,8 @@ public class InstitutionsTestData {
                 .withName("Francisk Skorina Gomel State University");
     }
 
+    public static InstitutionRequestDto.InstitutionRequestDtoBuilder createInstitutionRequestDto(){
+        return InstitutionRequestDto.builder()
+                .withName("Francisk Skorina Gomel State University");
+    }
 }

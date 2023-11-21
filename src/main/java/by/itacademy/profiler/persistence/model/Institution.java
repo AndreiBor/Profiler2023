@@ -31,23 +31,29 @@ public class Institution {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
+    @Column(name = "active", columnDefinition="BOOLEAN DEFAULT false")
+    private boolean active;
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Institution that = (Institution) o;
-        return getId() != null && Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return active == that.active && Objects.equals(id, that.id) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, active);
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "name = " + name + ")";
+        return "Institution{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

@@ -78,6 +78,18 @@ class InstitutionApiControllerIntegrationTest {
         assertThat(actualResponse).hasSize(92);
     }
 
+    @Test
+    void shouldReturn200AndJsonContentTypeWhenPostInstitution() {
+        ResponseEntity<String> response = restTemplate.exchange(
+                INSTITUTION_URL_TEMPLATE,
+                HttpMethod.POST,
+                getAuthHttpEntity(),
+                String.class);
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(MediaType.APPLICATION_JSON, response.getHeaders().getContentType());
+    }
+
     @SneakyThrows
     private HttpEntity<String> getAuthHttpEntity() {
         HttpEntity<Map<String, String>> requestHttpAuthEntity = AuthenticationTestData.createLoginRequestHttpEntity();

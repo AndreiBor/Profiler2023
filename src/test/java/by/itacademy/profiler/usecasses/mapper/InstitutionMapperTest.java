@@ -1,6 +1,7 @@
 package by.itacademy.profiler.usecasses.mapper;
 
 import by.itacademy.profiler.persistence.model.Institution;
+import by.itacademy.profiler.usecasses.dto.InstitutionRequestDto;
 import by.itacademy.profiler.usecasses.dto.InstitutionResponseDto;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -19,5 +20,13 @@ class InstitutionMapperTest {
 
         assertEquals(institution.getId(), institutionResponseDto.id());
         assertEquals(institution.getName(), institutionResponseDto.name());
+    }
+
+    @Test
+    void shouldMapCorrectlyAllFieldWhenInvokeFromDtoToEntity() {
+        InstitutionRequestDto institutionRequestDto = createInstitutionRequestDto().build();
+        Institution institution = institutionMapper.fromDtoToEntity(institutionRequestDto);
+
+        assertEquals(institution.getName(), institutionRequestDto.name());
     }
 }
